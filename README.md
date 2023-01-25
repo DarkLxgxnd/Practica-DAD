@@ -1,1 +1,1 @@
-# Emperor's League
+# Emperors League
