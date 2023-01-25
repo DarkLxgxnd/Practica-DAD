@@ -3,7 +3,11 @@
 Entidades:
 
 -Usuario
+
 -Equipo
+
 -Jugador
+
 -Clasificación
+
 -Partido
