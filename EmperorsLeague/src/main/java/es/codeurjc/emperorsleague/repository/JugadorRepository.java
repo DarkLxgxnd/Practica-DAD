@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import es.codeurjc.emperorsleague.model.Jugador;
 
-public interface JugadorRepository extends JpaRepository<Long, Jugador> {
+public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
 }

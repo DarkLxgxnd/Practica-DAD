@@ -34,17 +34,17 @@ public class PartidoController {
 
 		return "saved_partido";
 	}
-	@GetMapping("/partido/{numPartido}")
+	@GetMapping("/partidos/{numPartido}")
 	public String showPartidos(Model model, @PathVariable int numPartido) {
 
 		Partido partido = partidos.get(numPartido - 1);
 
-		model.addAttribute("part", partido);
+		model.addAttribute("partido", partido);
 		model.addAttribute("numPartido", numPartido);
 
 		return "show_partido";
 	}
-	@GetMapping("/partido/{numPartido}/delete")
+	@GetMapping("/partidos/{numPartido}/delete")
 	public String deletePartido(Model model, @PathVariable int numPartido) {
 
 		partidos.remove(numPartido - 1);
