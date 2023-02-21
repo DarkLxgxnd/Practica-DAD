@@ -30,7 +30,7 @@ public class PartidoService {
 	}
 
 	public void save(Partido Partido) {
-		repository.save(Shop);
+		repository.save(Partido);
 	}
 
 	public void delete(long id) {

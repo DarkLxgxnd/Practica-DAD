@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Jugador {
@@ -14,6 +15,9 @@ public class Jugador {
 	private String nombre;
 	private String apellidos;
 	private int dorsal;
+
+	@ManyToOne
+	private Equipo equipo;
 	
 	public Jugador() {
 	}
