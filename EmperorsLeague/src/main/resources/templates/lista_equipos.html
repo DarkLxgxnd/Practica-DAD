@@ -1,14 +1,18 @@
 <html>
 <body>
-<p> Lista de Equipos:</p>
-<ul>
-{{#equipos}}
-<li><a href="equipos/{{-index}}">{{nombre}} {{puntos}}</a></li>
-{{/equipos}}
+	<h2>Equipos Participantes</h2>
+    <ul class="items">
+        {{#equipos}}
+        <li><a href="/equipos/{{id}}">{{nombre}}</a></li>
+        {{/equipos}}
+    </ul>
 
-</ul>
-<br>
-	<a href="/equipos/new">Nuevo Equipo</a>
-</ul>
+    <div>
+        <button onclick="location.href='/equipos/new'">Nuevo Equipo</button>
+    </div>
+    
+    <div>
+        <button onclick="location.href='/'">Volver</button>
+    </div>
 </body>
 </html>

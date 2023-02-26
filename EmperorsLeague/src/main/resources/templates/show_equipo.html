@@ -1,0 +1,22 @@
+<html>
+<body>
+    <h2>{{equipo.nombre}}</h2>
+
+    <div>
+        <h3>Jugadores:</h3>
+        <ul class="items">
+            {{#equipo.jugadores}}
+            <li><a href="/equipos/{{equipo.id}}/jugadores/{{id}}">{{nombre}}</a></li>
+            {{/equipo.jugadores}}
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="location.href='/equipos/{{equipo.id}}/jugadores/new'">Nuevo Jugador</button>
+    </div>
+    
+    <div>
+        <button onclick="location.href='/equipos'">Volver</button>
+    </div>
+</body>
+</html>

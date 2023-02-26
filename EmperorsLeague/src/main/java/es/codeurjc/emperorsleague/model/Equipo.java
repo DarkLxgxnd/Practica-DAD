@@ -1,6 +1,5 @@
 package es.codeurjc.emperorsleague.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -27,7 +26,10 @@ public class Equipo {
     public Equipo(String nombre) {
         this.nombre = nombre;
         this.puntos = 0;
-        this.jugadores = new ArrayList<>();
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getNombre() {

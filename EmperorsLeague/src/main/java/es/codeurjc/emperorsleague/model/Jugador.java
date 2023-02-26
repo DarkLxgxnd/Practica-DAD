@@ -28,6 +28,10 @@ public class Jugador {
 		this.dorsal = dorsal;
 	}
 
+	public long getId() {
+		return id;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -50,5 +54,13 @@ public class Jugador {
 
 	public void setDorsal(int dorsal) {
 		this.dorsal = dorsal;
+	}
+
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
 	}
 }
