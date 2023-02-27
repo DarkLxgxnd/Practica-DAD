@@ -1,15 +1,35 @@
 <html>
-<head>
-	<meta charset="UTF-8"/>
-</head>
 <body>
-	<form action="partidos/new" method="post">
-		<p>Equipos: </p>	
-		<input type='text' name='resultado'/>
-		<p>Resultado:</p>
-		<input type='text' name='equipos'/>
+	<form action="/partidos/new" method="post" enctype="multipart/form-data">
+		<h2>Nuevo Partido</h2>
+		<div>
+			<label>Equipo Local: </label>
+			<select name="equiposParticipantes">
+				{{#equipos}}
+				<option value="{{id}}">{{nombre}}</option>
+				{{/equipos}}
+			</select>
 
-		<input type='submit' value='Save'/>
+			<label>Goles: </label>
+            <input type="number" name="golesLocal" placeholder="Goles"/>
+		</div>
+
+		<div>
+			<label>Equipo Visitante: </label>
+			<select name="equiposParticipantes">
+				{{#equipos}}
+				<option value="{{id}}">{{nombre}}</option>
+				{{/equipos}}
+			</select>
+
+			<label>Goles: </label>
+            <input type="number" name="golesVisitante" placeholder="Goles"/>
+		</div>
+
+		<p>
+            <button onclick="location.href='/partidos'; return false;">Cancelar</button>
+            <input type="submit" value="Save"/>
+        </p>
 	</form>
 </body>
 </html>

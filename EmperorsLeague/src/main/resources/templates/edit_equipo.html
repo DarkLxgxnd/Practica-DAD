@@ -1,0 +1,18 @@
+<html>
+<body>
+    <form action="/equipos/{{equipo.id}}/edit" method="post" enctype="multipart/form-data">
+        <h2>Equipo "{{equipo.nombre}}"</h2>
+        <input type="hidden" name="id" value="{{equipo.id}}" />
+
+        <div>
+            <label>Nombre: </label>
+            <input name="nombre" value="{{equipo.nombre}}" placeholder="nombre"/>
+        </div>
+
+        <p>
+            <button onclick="location.href='/equipos/{{equipo.id}}'; return false;">Cancelar</button>
+            <input type="submit" value="Save"/>
+        </p>
+    </form>
+</body>    
+</html>

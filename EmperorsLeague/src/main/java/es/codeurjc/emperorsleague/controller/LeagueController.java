@@ -1,6 +1,5 @@
 package es.codeurjc.emperorsleague.controller;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import es.codeurjc.emperorsleague.model.Jugador;
 import es.codeurjc.emperorsleague.model.Partido;
 import es.codeurjc.emperorsleague.service.EquipoService;
 import es.codeurjc.emperorsleague.service.JugadorService;
+import es.codeurjc.emperorsleague.service.PartidoService;
 
 @Controller
 public class LeagueController {
@@ -23,48 +23,51 @@ public class LeagueController {
 
 	@Autowired
     private JugadorService jugadorService;
-	
-	ArrayList<Partido> partidos = new ArrayList<>();
-	
-	public  LeagueController() {
-		Partido p1= new Partido("1-0","BCN-RMA");
-		Partido p2= new Partido("2-0","MFC-ATH");
-		partidos.add(p1);
-		partidos.add(p2);
-	}
+
+	@Autowired
+    private PartidoService partidoService;
 
 	@GetMapping("/")
 	public String inicio(Model model) {
 		return "principal";
 	}
+
+	/* Partidos */
 	
 	@GetMapping("/partidos")
-	public String listaPartdios(Model model) {
-	
-		model.addAttribute("partidos",partidos);
+	public String showPartidos(Model model) {
+		model.addAttribute("partidos", partidoService.findAll());
+
 		return "lista_partidos";
 	}
+
+	@GetMapping("/partidos/new")
+	public String newPartido(Model model) {
+		model.addAttribute("equipos", equipoService.findAll());
+
+		return "new_partido";
+	}
+
 	@PostMapping("/partidos/new")
 	public String newPartido(Model model, Partido partido) {
-
-		partidos.add(partido);
+		partidoService.save(partido);
 
 		return "saved_partido";
 	}
-	@GetMapping("/partidos/{numPartido}")
-	public String showPartidos(Model model, @PathVariable int numPartido) {
 
-		Partido partido = partidos.get(numPartido - 1);
+	@GetMapping("/partidos/{id_partido}")
+	public String showPartido(Model model, @PathVariable long id_partido) {
+		Optional<Partido> partido = partidoService.findById(id_partido);
 
-		model.addAttribute("partido", partido);
-		model.addAttribute("numPartido", numPartido);
+		model.addAttribute("partido", partido.get());
 
 		return "show_partido";
 	}
+
 	@GetMapping("/partidos/{numPartido}/delete")
 	public String deletePartido(Model model, @PathVariable int numPartido) {
 
-		partidos.remove(numPartido - 1);
+		
 
 		return "deleted_partido";
 	}
@@ -97,6 +100,32 @@ public class LeagueController {
 		model.addAttribute("equipo", equipo.get());
 
 		return "show_equipo";
+	}
+
+	@GetMapping("/equipos/{id_equipo}/delete")
+	public String deleteEquipo(Model model, @PathVariable long id_equipo) {
+		Optional<Equipo> equipo = equipoService.findById(id_equipo);
+
+		equipoService.delete(id_equipo);
+		model.addAttribute("equipo", equipo.get());
+
+		return "deleted_equipo";
+	}
+
+	@GetMapping("/equipos/{id_equipo}/edit")
+	public String editEquipo(Model model, @PathVariable long id_equipo) {
+		Optional<Equipo> equipo = equipoService.findById(id_equipo);
+
+		model.addAttribute("equipo", equipo.get());
+
+		return "edit_equipo";
+	}
+
+	@PostMapping("/equipos/{id_equipo}/edit")
+	public String editEquipoProcess(Model model, Equipo equipo, @PathVariable long id_equipo) {
+		equipoService.save(equipo);
+
+		return "edited_equipo";
 	}
 
 	/* Jugadores */

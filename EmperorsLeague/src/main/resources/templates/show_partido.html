@@ -1,12 +1,18 @@
 <html>
 <body>
-	<p>Equipos: {{partido.equipos}}</p>
-	<p>Resultado: {{partido.resultado}}</p>
-	
-	<a href="/partidos/{{numPartido}}/delete">Delete partido</a>
+	<h3 style="text-align:center;">
+		{{#partido.equiposParticipantes}}
+			{{nombre}}
+		{{/partido.equiposParticipantes}}
+	</h3>
+	<p style="text-align:center;">
+		{{partido.golesLocal}} - {{partido.golesVisitante}}
+	</p>
 	
 	<br>
 	
-	<a href="/">Back</a>
+	<div>
+        <button onclick="location.href='/partidos'">Volver</button>
+    </div>
 </body>
 </html>
