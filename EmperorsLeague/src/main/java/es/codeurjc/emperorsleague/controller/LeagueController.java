@@ -64,12 +64,28 @@ public class LeagueController {
 		return "show_partido";
 	}
 
-	@GetMapping("/partidos/{numPartido}/delete")
-	public String deletePartido(Model model, @PathVariable int numPartido) {
-
-		
+	@GetMapping("/partidos/{id_partido}/delete")
+	public String deletePartido(Model model, @PathVariable long id_partido) {
+		partidoService.delete(id_partido);
 
 		return "deleted_partido";
+	}
+
+	@GetMapping("/partidos/{id_partido}/edit")
+	public String editPartido(Model model, @PathVariable long id_partido) {
+		Optional<Partido> partido = partidoService.findById(id_partido);
+
+		model.addAttribute("equipos", equipoService.findAll());
+		model.addAttribute("partido", partido.get());
+
+		return "edit_partido";
+	}
+
+	@PostMapping("/partidos/{id_partido}/edit")
+	public String editPartidoProcess(Model model, Partido partido, @PathVariable long id_partido) {
+		partidoService.save(partido);
+
+		return "edited_partido";
 	}
 
 	/* Equipos */
@@ -160,5 +176,37 @@ public class LeagueController {
 		model.addAttribute("equipo", equipo.get());
 
 		return "show_jugador";
+	}
+
+	@GetMapping("/equipos/{id_equipo}/jugadores/{id_jugador}/delete")
+	public String deleteJugador(Model model, @PathVariable long id_equipo, @PathVariable long id_jugador) {
+		Optional<Equipo> equipo = equipoService.findById(id_equipo);
+
+		jugadorService.delete(id_jugador);
+		model.addAttribute("equipo", equipo.get());
+
+		return "deleted_jugador";
+	}
+
+	@GetMapping("/equipos/{id_equipo}/jugadores/{id_jugador}/edit")
+	public String editJugador(Model model, @PathVariable long id_equipo, @PathVariable long id_jugador) {
+		Optional<Jugador> jugador = jugadorService.findById(id_jugador);
+		Optional<Equipo> equipo = equipoService.findById(id_equipo);
+
+		model.addAttribute("jugador", jugador.get());
+		model.addAttribute("equipo", equipo.get());
+
+
+		return "edit_jugador";
+	}
+
+	@PostMapping("/equipos/{id_equipo}/jugadores/{id_jugador}/edit")
+	public String editJugadorProcess(Model model, Jugador jugador, @PathVariable long id_equipo, @PathVariable long id_jugador) {
+		Optional<Equipo> equipo = equipoService.findById(id_equipo);
+
+		jugadorService.save(jugador);
+		model.addAttribute("equipo", equipo.get());
+
+		return "edited_jugador";
 	}
 }

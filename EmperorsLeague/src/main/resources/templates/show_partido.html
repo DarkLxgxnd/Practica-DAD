@@ -1,15 +1,23 @@
 <html>
 <body>
-	<h3 style="text-align:center;">
-		{{#partido.equiposParticipantes}}
-			{{nombre}}
-		{{/partido.equiposParticipantes}}
-	</h3>
-	<p style="text-align:center;">
-		{{partido.golesLocal}} - {{partido.golesVisitante}}
-	</p>
+	<div>
+		<h3 style="text-align:center;">
+			{{#partido.equiposParticipantes}} {{nombre}} {{/partido.equiposParticipantes}}
+		</h3>
+		
+		<p style="text-align:center;">
+			{{partido.golesLocal}} - {{partido.golesVisitante}}
+		</p>
+	</div>
 	
 	<br>
+
+	<div>
+        <button onclick="location.href='/partidos/{{partido.id}}/edit'">Editar Partido</button>
+        <button onclick="location.href='/partidos/{{partido.id}}/delete'">Eliminar Partido</button>
+    </div>
+    
+    <br>
 	
 	<div>
         <button onclick="location.href='/partidos'">Volver</button>

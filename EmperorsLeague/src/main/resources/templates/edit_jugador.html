@@ -1,0 +1,28 @@
+<html>
+<body>
+	<form action="/equipos/{{equipo.id}}/jugadores/{{jugador.id}}/edit" method="post" enctype="multipart/form-data">
+        <h2>Jugador "{{jugador.nombre}} {{jugador.apellidos}}"</h2>
+        <input type="hidden" name="id" value="{{jugador.id}}" />
+
+        <div>
+            <label>Nombre: </label>
+            <input name="nombre" value="{{jugador.nombre}}" placeholder="Nombre"/>
+        </div>
+
+        <div>
+            <label>Apellidos: </label>
+            <input name="apellidos" value="{{jugador.apellidos}}" placeholder="Apellidos"/>
+        </div>
+
+        <div>
+            <label>Dorsal: </label>
+            <input type="number" name="dorsal" value="{{jugador.dorsal}}" placeholder="Dorsal"/>
+        </div>
+
+        <p>
+            <button onclick="location.href='/equipos/{{equipo.id}}/jugadores/{{jugador.id}}'; return false;">Cancelar</button>
+            <input type="submit" value="Save"/>
+        </p>
+    </form>
+</body>
+</html>

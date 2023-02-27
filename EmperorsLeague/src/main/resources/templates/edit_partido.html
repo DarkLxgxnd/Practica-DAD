@@ -1,0 +1,37 @@
+<html>
+<body>
+    <form action="/partidos/{{partido.id}}/edit" method="post" enctype="multipart/form-data">
+		<h2>Partido "{{#partido.equiposParticipantes}} {{nombre}} {{/partido.equiposParticipantes}}"</h2>
+        <input type="hidden" name="id" value="{{partido.id}}" />
+
+		<div>
+			<label>Equipo Local: </label>
+			<select name="equiposParticipantes">
+				{{#equipos}}
+				<option value="{{id}}">{{nombre}}</option>
+				{{/equipos}}
+			</select>
+
+			<label>Goles: </label>
+            <input type="number" name="golesLocal" value="{{partido.golesLocal}}" placeholder="Goles"/>
+		</div>
+
+		<div>
+			<label>Equipo Visitante: </label>
+			<select name="equiposParticipantes">
+				{{#equipos}}
+				<option value="{{id}}">{{nombre}}</option>
+				{{/equipos}}
+			</select>
+
+			<label>Goles: </label>
+            <input type="number" name="golesVisitante" value="{{partido.golesVisitante}}" placeholder="Goles"/>
+		</div>
+
+		<p>
+            <button onclick="location.href='/partidos/{{partido.id}}'; return false;">Cancelar</button>
+            <input type="submit" value="Save"/>
+        </p>
+	</form>
+</body>
+</html>
