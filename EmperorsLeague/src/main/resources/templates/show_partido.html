@@ -1,5 +1,8 @@
-<html>
-<body>
+{{>header}}
+
+<div>
+    <br>
+
 	<div>
 		<h3 style="text-align:center;">
 			{{#partido.equiposParticipantes}} {{nombre}} {{/partido.equiposParticipantes}}
@@ -22,5 +25,6 @@
 	<div>
         <button onclick="location.href='/partidos'">Volver</button>
     </div>
-</body>
-</html>
+</div>
+
+{{>footer}}

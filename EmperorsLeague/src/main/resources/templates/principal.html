@@ -1,13 +1,29 @@
-<html>
-<body>
-<p> Lista de Partidos:</p>
-	<a href="/partidos">Lista Partido</a>
-	<button onclick="location.href='/partidos'">Lista Partido</button>
-<p> Lista equipos:</p>
-	<a href="/equipos">Lista Equipos</a>
-<br>
-<p> Clasificacion:</p>
-	<a href="/Clasificacion">clasificacion</a>
+{{>header}}
 
-</body>
-</html>
+<div>
+    <br>
+
+	<h1>¡Bienvenido a Emperors League!</h1>
+	<h3>La liga de fútbol profesional más competitiva</h3>
+
+	<br>
+	
+	<div>
+		<p> Ver Clasificación -> <button onclick="location.href='/clasificacion'">Clasificacion</button></p>
+	</div>
+
+	<br>
+	
+	<div>
+		<p> Ver Partidos -> <button onclick="location.href='/partidos'">Partidos</button></p>
+	</div>
+
+	<br>
+	
+	<div>
+		<p> Ver Equipo -> <button onclick="location.href='/equipos'">Equipos</button></p>
+	</div>
+
+</div>
+
+{{>footer}}

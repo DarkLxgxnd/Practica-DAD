@@ -1,0 +1,41 @@
+{{>header}}
+
+<div>
+    <br>
+
+    <h2>Clasificación de la Liga</h2>
+
+    <div>
+        <table class="default">
+            <thead>
+                <tr>
+                    <th>Puesto</th>
+                    <th>Equipo</th>
+                    <th>Puntos</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <ul style="list-style-type:none;">
+                    {{#equipos}}
+                    <tr>
+                        <li>
+                            <td></td>
+                            <td>{{nombre}}</td>
+                            <td>3</td>
+                        </li>
+                    </tr>
+                    {{/equipos}}
+                </ul>              
+            </tbody>
+        </table>
+    </div>
+    
+    <br>
+
+    <div>
+        <button onclick="location.href='/'">Volver</button>
+    </div>
+</div>
+
+{{>footer}}

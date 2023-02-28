@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import es.codeurjc.emperorsleague.model.Clasificacion;
 import es.codeurjc.emperorsleague.model.Equipo;
 import es.codeurjc.emperorsleague.model.Jugador;
 import es.codeurjc.emperorsleague.model.Partido;
+import es.codeurjc.emperorsleague.service.ClasificacionService;
 import es.codeurjc.emperorsleague.service.EquipoService;
 import es.codeurjc.emperorsleague.service.JugadorService;
 import es.codeurjc.emperorsleague.service.PartidoService;
@@ -19,17 +21,33 @@ import es.codeurjc.emperorsleague.service.PartidoService;
 @Controller
 public class LeagueController {
     @Autowired
+	private ClasificacionService clasificacionService;
+	
+	@Autowired
+    private PartidoService partidoService;
+	
+	@Autowired
     private EquipoService equipoService;
 
 	@Autowired
     private JugadorService jugadorService;
 
-	@Autowired
-    private PartidoService partidoService;
+	/* Página Principal */
 
 	@GetMapping("/")
 	public String inicio(Model model) {
 		return "principal";
+	}
+
+	/* Clasificacion */
+
+	@GetMapping("/clasificacion")
+	public String showClasificacion(Model model) {
+		Optional<Clasificacion> clasificacion = clasificacionService.findById(1);
+
+		model.addAttribute("clasificacion", clasificacion);
+
+		return "show_clasificacion";
 	}
 
 	/* Partidos */

@@ -22,8 +22,8 @@ public class PartidoService {
 		return repository.findAll();
 	}
 
-	public void save(Partido Partido) {
-		repository.save(Partido);
+	public void save(Partido partido) {
+		repository.save(partido);
 	}
 
 	public void delete(long id) {

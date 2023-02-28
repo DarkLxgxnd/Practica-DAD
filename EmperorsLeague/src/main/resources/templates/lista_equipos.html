@@ -1,5 +1,8 @@
-<html>
-<body>
+{{>header}}
+
+<div>
+    <br>
+    
 	<h2>Equipos Participantes</h2>
     <ul class="items">
         {{#equipos}}
@@ -10,9 +13,12 @@
     <div>
         <button onclick="location.href='/equipos/new'">Nuevo Equipo</button>
     </div>
+
+    <br>
     
     <div>
         <button onclick="location.href='/'">Volver</button>
     </div>
-</body>
-</html>
+</div>
+
+{{>footer}}

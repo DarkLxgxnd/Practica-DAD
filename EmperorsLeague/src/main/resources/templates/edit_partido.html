@@ -1,5 +1,8 @@
-<html>
-<body>
+{{>header}}
+
+<div>
+    <br>
+	
     <form action="/partidos/{{partido.id}}/edit" method="post" enctype="multipart/form-data">
 		<h2>Partido "{{#partido.equiposParticipantes}} {{nombre}} {{/partido.equiposParticipantes}}"</h2>
         <input type="hidden" name="id" value="{{partido.id}}" />
@@ -33,5 +36,6 @@
             <input type="submit" value="Save"/>
         </p>
 	</form>
-</body>
-</html>
+</div>
+
+{{>footer}}

@@ -1,5 +1,8 @@
-<html>
-<body>
+{{>header}}
+
+<div>
+    <br>
+    
     <h2>{{jugador.nombre}} {{jugador.apellidos}}</h2>
 
     <div>
@@ -17,5 +20,6 @@
     <br>
 
     <button onclick="location.href='/equipos/{{equipo.id}}'">Volver</button>
-</body>
-</html>
+</div>
+
+{{>footer}}
