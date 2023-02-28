@@ -25,3 +25,12 @@ Stefan Gonzales
 ### Funcionalidades de servicio interno:
 - Envío de novedades de los equipos a sus aficionados adscritos a éstos.
 - Envío de comunicaciones oficiales de la liga a los equipos.
+
+### Diagrama de navegacion
+<img width="476" alt="2023-02-27 (7)" src="https://user-images.githubusercontent.com/123498958/221691871-b61bb858-cc4f-4055-b3cf-2f922d253f5c.png">
+
+### Diagraa de clases UML
+<img width="540" alt="2023-02-27 (9)" src="https://user-images.githubusercontent.com/123498958/221692632-91e62c9a-d4b5-4ec6-aba7-8b195900c970.png">
+
+### DiagramaEntidad/Relación
+<img width="508" alt="2023-02-27 (5)" src="https://user-images.githubusercontent.com/123498958/221692814-a71cc0cf-11aa-49a6-8821-af6affb09d93.png">
