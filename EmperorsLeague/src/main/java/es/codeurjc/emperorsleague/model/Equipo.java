@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,6 +24,9 @@ public class Equipo {
 
     @ManyToMany(mappedBy = "equiposParticipantes")
     private List<Partido> partidos;
+
+    @ManyToOne
+    private Clasificacion clasificacion;
 
     public Equipo() {
     }
@@ -58,5 +62,21 @@ public class Equipo {
 
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
+    }
+
+    public List<Partido> getPartidos() {
+        return partidos;
+    }
+
+    public void setPartidos(List<Partido> partidos) {
+        this.partidos = partidos;
+    }
+
+    public Clasificacion getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(Clasificacion clasificacion) {
+        this.clasificacion = clasificacion;
     }
 }

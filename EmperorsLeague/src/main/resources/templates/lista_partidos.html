@@ -4,9 +4,13 @@
     <br>
 
 	<h2>Partidos Disputados</h2>
+
+    <br>
+
     <ul class="items">
         {{#partidos}}
         <li><a href="/partidos/{{id}}">{{#equiposParticipantes}} {{nombre}} <br> {{/equiposParticipantes}}</a></li>
+        <br>
         {{/partidos}}
     </ul>
 

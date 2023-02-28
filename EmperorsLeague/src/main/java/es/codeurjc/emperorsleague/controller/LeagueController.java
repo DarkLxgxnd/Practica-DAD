@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import es.codeurjc.emperorsleague.model.Clasificacion;
 import es.codeurjc.emperorsleague.model.Equipo;
 import es.codeurjc.emperorsleague.model.Jugador;
 import es.codeurjc.emperorsleague.model.Partido;
@@ -43,9 +42,7 @@ public class LeagueController {
 
 	@GetMapping("/clasificacion")
 	public String showClasificacion(Model model) {
-		Optional<Clasificacion> clasificacion = clasificacionService.findById(1);
-
-		model.addAttribute("clasificacion", clasificacion);
+		model.addAttribute("clasificacion", clasificacionService.findAll());
 
 		return "show_clasificacion";
 	}

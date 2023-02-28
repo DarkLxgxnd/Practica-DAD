@@ -5,11 +5,13 @@
 
     <h2>{{equipo.nombre}}</h2>
 
+    <br>
+
     <div>
         <h3>Jugadores:</h3>
         <ul class="items">
             {{#equipo.jugadores}}
-            <li><a href="/equipos/{{equipo.id}}/jugadores/{{id}}">{{nombre}}</a></li>
+            <li><a href="/equipos/{{equipo.id}}/jugadores/{{id}}">{{nombre}} {{apellidos}}</a></li>
             {{/equipo.jugadores}}
         </ul>
     </div>
