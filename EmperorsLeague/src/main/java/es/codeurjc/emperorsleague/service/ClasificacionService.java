@@ -1,6 +1,5 @@
 package es.codeurjc.emperorsleague.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,8 @@ public class ClasificacionService {
 		return repository.findById(id);
 	}
 
-	public List<Clasificacion> findAll() {
-		return repository.findAll();
+	public Clasificacion getReferenceById(long id) {
+		return repository.getReferenceById(id);
 	}
 
 	public void save(Clasificacion clasificacion) {

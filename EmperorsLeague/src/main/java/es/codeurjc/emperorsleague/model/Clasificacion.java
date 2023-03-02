@@ -1,5 +1,7 @@
 package es.codeurjc.emperorsleague.model;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -30,5 +32,21 @@ public class Clasificacion {
 
     public void setEquipos(List<Equipo> equipos) {
         this.equipos = equipos;
+    }
+
+    public void ordenarEquipos() {
+        Collections.sort(this.equipos, new CompararPorPuntos());
+
+        int puesto = 1;
+        for (Equipo equipo: equipos) {
+            equipo.setRanking(puesto);
+            puesto++;
+        }
+    }
+
+    class CompararPorPuntos implements Comparator<Equipo> {
+        public int compare(Equipo o1, Equipo o2) {
+            return o2.getPuntos() - o1.getPuntos();
+        }
     }
 }

@@ -55,4 +55,26 @@ public class Partido {
 	public void setEquiposParticipantes(List<Equipo> equiposParticipantes) {
 		this.equiposParticipantes = equiposParticipantes;
 	}
+
+	public void setPuntos() {
+		int i = 0;
+
+		for (Equipo equipo: equiposParticipantes) {
+			if (i == 0) {
+				if (this.golesLocal > this.golesVisitante) {
+					equipo.ganaPuntos();
+				} else if (this.golesLocal == this.golesVisitante) {
+					equipo.igualPuntos();
+				}
+
+				i++;
+			} else {
+				if (this.golesLocal < this.golesVisitante) {
+					equipo.ganaPuntos();
+				} else if (this.golesLocal == this.golesVisitante) {
+					equipo.igualPuntos();
+				}
+			}
+		}
+	}
 }

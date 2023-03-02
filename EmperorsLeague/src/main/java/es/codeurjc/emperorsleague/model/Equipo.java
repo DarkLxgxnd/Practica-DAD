@@ -17,6 +17,7 @@ public class Equipo {
 	private long id;
 
     private String nombre;
+    private int ranking;
     private int puntos;
 
     @OneToMany(mappedBy = "equipo")
@@ -48,12 +49,28 @@ public class Equipo {
         this.nombre = nombre;
     }
 
+    public int getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+
     public int getPuntos() {
         return puntos;
     }
 
     public void setPuntos(int puntos) {
         this.puntos = puntos;
+    }
+
+    public void ganaPuntos() {
+        this.puntos += 3;
+    }
+
+    public void igualPuntos() {
+        this.puntos += 1;
     }
 
     public List<Jugador> getJugadores() {
