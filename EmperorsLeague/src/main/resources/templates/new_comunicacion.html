@@ -1,0 +1,30 @@
+{{>header}}
+
+<div>
+    <br>
+
+	<form action="/comunicaciones/new" method="post" enctype="multipart/form-data">
+        <h2>Nueva Comunicación de la Liga</h2>
+
+        <br>
+
+        <div>
+            <label>Título: </label>
+            <input name="titulo" placeholder="Título"/>
+        </div>
+
+        <div>
+            <label>Contenido: </label>
+            <input type="text" name="contenido" placeholder="Contenido"/>
+        </div>
+
+        <br>
+
+        <p>
+            <button onclick="location.href='/'; return false;">Cancelar</button>
+            <input type="submit" value="Enviar"/>
+        </p>
+    </form>
+</div>
+
+{{>footer}}
