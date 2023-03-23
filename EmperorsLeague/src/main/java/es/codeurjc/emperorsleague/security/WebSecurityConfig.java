@@ -39,23 +39,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/equipos").permitAll();
         http.authorizeRequests().antMatchers("/clasificacion").permitAll();
         http.authorizeRequests().antMatchers("/partidos/{id_partido}").permitAll();
-        http.authorizeRequests().antMatchers("/equipos/{id_equipo}").permitAll();
-        http.authorizeRequests().antMatchers("/equipos/{id_equipo}/jugadores/{id_jugador}").permitAll();
+      
 
 
          // Private pages
         /*  http.authorizeRequests().antMatchers("/newbook").hasAnyRole("USER");
-         http.authorizeRequests().antMatchers("/editbook/*").hasAnyRole("USER");
-         http.authorizeRequests().antMatchers("/removebook/*").hasAnyRole("ADMIN");*///Manager,user,admin
+         http.authorizeRequests().antMatchers("/editbook/").hasAnyRole("USER");
+         http.authorizeRequests().antMatchers("/removebook/").hasAnyRole("ADMIN"); Manager,user,admin
+         http.authorizeRequests().antMatchers("/equipos/").hasAnyRole("USER");
+         http.authorizeRequests().antMatchers("/equipos//jugadores/").hasAnyRole("USER"); */
          http.authorizeRequests().antMatchers("/partidos/new").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("//partidos/{id_partido}/edit").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("//partidos/{id_partido}/delete").hasAnyRole("ADMIN");
+         http.authorizeRequests().antMatchers("//partidos/**/edit").hasAnyRole("ADMIN");
+         http.authorizeRequests().antMatchers("//partidos/*/delete").hasAnyRole("ADMIN");
          http.authorizeRequests().antMatchers("/equipos/new").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("/equipos/{id_equipo}/edit").hasAnyRole("MANAGER");
-         http.authorizeRequests().antMatchers("/equipos/{id_equipo}/delete").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("/equipos/{id_equipo}/jugadores/new").hasAnyRole("MANAGER");
-         http.authorizeRequests().antMatchers("/equipos/{id_equipo}/jugadores/{id_jugador}/edit").hasAnyRole("MANAGER");
-         http.authorizeRequests().antMatchers("/equipos/{id_equipo}/jugadores/{id_jugador}/delete").hasAnyRole("MANAGER");
+         http.authorizeRequests().antMatchers("/equipos/*/edit").hasAnyRole("MANAGER");
+         http.authorizeRequests().antMatchers("/equipos/*/delete").hasAnyRole("ADMIN");
+         http.authorizeRequests().antMatchers("/equipos/*/jugadores/new").hasAnyRole("MANAGER");
+         http.authorizeRequests().antMatchers("/equipos/*/jugadores/*/edit").hasAnyRole("MANAGER");
+         http.authorizeRequests().antMatchers("/equipos/*/jugadores/*/delete").hasAnyRole("MANAGER");
 
 
          // Login form
