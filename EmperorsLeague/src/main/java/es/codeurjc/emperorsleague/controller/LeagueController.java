@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import es.codeurjc.emperorsleague.events.ComunicacionSender;
 import es.codeurjc.emperorsleague.model.Clasificacion;
 import es.codeurjc.emperorsleague.model.Equipo;
 import es.codeurjc.emperorsleague.model.Jugador;
@@ -51,6 +52,8 @@ public class LeagueController {
 			model.addAttribute("logged", false);
 		}
 	}
+	@Autowired
+	private ComunicacionSender comunicacionSender;
 
 	/* Página Principal */
 
@@ -249,5 +252,19 @@ public class LeagueController {
 		model.addAttribute("equipo", equipo.get());
 
 		return "edited_jugador";
+	}
+
+	/* Servicio Interno */
+
+	@GetMapping("/comunicaciones/new")
+	public String newComunicacion(Model model) {
+		return "new_comunicacion";
+	}
+
+	@PostMapping("/comunicaciones/new")
+	public String newComunicacionProcess(Model model, String titulo, String contenido) {
+		comunicacionSender.sendComunicacion(titulo, contenido);
+		
+		return "send_comunicacion";
 	}
 }
