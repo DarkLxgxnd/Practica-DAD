@@ -1,0 +1,25 @@
+{{>header}}
+
+<div>
+    <br>
+
+    <h2>Notificaciones</h2>
+
+    <br>
+
+    <div>
+        <ul class="items", style="list-style:none;">
+            {{#notificaciones}}
+            <li><h3>{{titulo}}</h3> <br> <p>{{contenido}}</p> <br><br></li>
+            {{/notificaciones}}
+        </ul>
+    </div>
+    
+    <br>
+
+    <div>
+        <button onclick="location.href='/'">Volver</button>
+    </div>
+</div>
+
+{{>footer}}
