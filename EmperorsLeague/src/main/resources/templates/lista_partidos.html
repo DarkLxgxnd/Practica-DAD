@@ -14,9 +14,14 @@
         {{/partidos}}
     </ul>
 
+    {{#logged}}
+
+    {{#admin}}
     <div>
         <button onclick="location.href='/partidos/new'">Nuevo Partido</button>
     </div>
+    {{/admin}}
+    {{/logged}}
 
 	<br>
     
