@@ -23,36 +23,33 @@
 			<div class="navbar-nav mr-auto">
 				<a class="navbar-brand" href="/">Emperors League</a>
 			</div>
+
 			{{^logged}}
 			<form action="/login" method="post" class="form-inline">
 
 				<div class="form-group">
-					<input type="text" class="form-control mr-sm-2" name="username"
-						placeholder="Username">
+					<input type="text" class="form-control mr-sm-2" name="username" placeholder="Usuario">
 				</div>
 
 				<div class="form-group">
-					<input type="password" class="form-control mr-sm-2" name="password"
-						placeholder="Password">
+					<input type="password" class="form-control mr-sm-2" name="password" placeholder="Contraseña">
 				</div>
 
 				<button type="submit" class="btn btn-default">Sign In</button>
 
 				<input type="hidden" name="_csrf" value="{{token}}" />
-
 			</form>
-
-			<button onclick="location.href='/registro'"class="btn btn-default">New Register</button>
 			{{/logged}} {{#logged}}
 			<div class="nav navbar-nav navbar-right">
 
 				<ul class="nav navbar-nav">
 					<li>{{userName}}</li>
+					<li><a href="/notificaciones" style="color:white;">Notificaciones</a></li>
 					<li><form action="/logout" method="post">
-							<button class="btn btn-default navbar-btn" type="submit">Log
-								Out</button>
+							<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
 							<input type="hidden" name="_csrf" value="{{token}}" />
-						</form></li>
+						</form>
+					</li>
 				</ul>
 
 			</div>

@@ -18,7 +18,7 @@ public class EmperorsLeagueApplication {
 	}
 
 	@Bean
-	public Queue suscripcionQueue() {
-		return new Queue("suscripciones", false);
+	public Queue notificacionesQueue() {
+		return new Queue("notificaciones", false);
 	}
 }
