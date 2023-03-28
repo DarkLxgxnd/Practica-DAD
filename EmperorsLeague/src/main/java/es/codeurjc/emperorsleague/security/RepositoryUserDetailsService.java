@@ -16,23 +16,19 @@ import es.codeurjc.emperorsleague.model.Usuario;
 import es.codeurjc.emperorsleague.repository.UsuarioRepository;
 
 @Service
-public class RepositoryUserDetailsService implements UserDetailsService{
-    
+public class RepositoryUserDetailsService implements UserDetailsService {
     @Autowired
-	private UsuarioRepository userRepository;
+	private UsuarioRepository usuarioRepository;
 
     @Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		Usuario user = userRepository.findByNombre(username)
-				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
+		Usuario usuario = usuarioRepository.findByNombre(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
 		List<GrantedAuthority> roles = new ArrayList<>();
-		for (String role : user.getRoles()) {
-			roles.add(new SimpleGrantedAuthority("ROLE_" + role));
-		}
-        return new org.springframework.security.core.userdetails.User(user.getNombre(), 
-				user.getEncodedContrasena(), roles);
 
+		for (String rol : usuario.getRoles()) {
+			roles.add(new SimpleGrantedAuthority("ROLE_" + rol));
+		}
+
+        return new org.springframework.security.core.userdetails.User(usuario.getNombre(), usuario.getContrasena(), roles);
     }
 }

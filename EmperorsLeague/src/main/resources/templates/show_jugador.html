@@ -14,12 +14,14 @@
 
     <br>
 
+    {{#manager}}
     <div>
         <button onclick="location.href='/equipos/{{equipo.id}}/jugadores/{{jugador.id}}/edit'">Editar Jugador</button>
         <button onclick="location.href='/equipos/{{equipo.id}}/jugadores/{{jugador.id}}/delete'">Eliminar Jugador</button>
     </div>
     
     <br>
+    {{/manager}}
 
     <button onclick="location.href='/equipos/{{equipo.id}}'">Volver</button>
 </div>

@@ -58,6 +58,8 @@ public class LeagueController {
 			model.addAttribute("logged", true);
 			model.addAttribute("userName", principal.getName());
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
+			model.addAttribute("manager", request.isUserInRole("MANAGER"));
+			model.addAttribute("user", request.isUserInRole("USER"));
 		} else {
 			model.addAttribute("logged", false);
 		}

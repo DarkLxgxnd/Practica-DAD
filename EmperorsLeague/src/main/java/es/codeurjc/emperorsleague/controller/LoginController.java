@@ -25,16 +25,15 @@ public class LoginController {
 		return "loginerror";
 	}
 	
-	@GetMapping("/registro")
-	public String newPartido(Model model) {
-		return "registro";
+	@GetMapping("/signup")
+	public String newUsuario(Model model) {
+		return "signup";
 	}
 
-	@PostMapping("/registro")
-	public String newPartido(Model model,  Usuario usuario) {
-		
+	@PostMapping("/signup")
+	public String newUsuarioProcess(Model model, Usuario usuario) {
 		usuarioService.save(usuario);
 
-		return "registro";
+		return "/signedup";
 	}
 }

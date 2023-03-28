@@ -16,15 +16,22 @@
         </ul>
     </div>
 
+    {{#manager}}
     <div>
         <button onclick="location.href='/equipos/{{equipo.id}}/jugadores/new'">Nuevo Jugador</button>
     </div>
-    
+    {{/manager}}
+
     <br>
 
     <div>
+        {{#manager}}
         <button onclick="location.href='/equipos/{{equipo.id}}/edit'">Editar Equipo</button>
+        {{/manager}}
+
+        {{#admin}}
         <button onclick="location.href='/equipos/{{equipo.id}}/delete'">Eliminar Equipo</button>
+        {{/admin}}
     </div>
     
     <br>

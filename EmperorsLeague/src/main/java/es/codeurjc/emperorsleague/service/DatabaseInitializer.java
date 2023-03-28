@@ -24,12 +24,11 @@ public class DatabaseInitializer {
 
     @PostConstruct
     public void init() {
-        Clasificacion clasificacion = new Clasificacion();
-        clasificacionRepository.save(clasificacion);
+        clasificacionRepository.save(new Clasificacion());
 
-        usuarioRepository.save(new Usuario("user", passwordEncoder.encode("adminpass"), "USER"));//User=aficionado
-	    usuarioRepository.save(new Usuario("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
-        usuarioRepository.save(new Usuario("manager", passwordEncoder.encode("adminpass"), "USER", "MANAGER"));
+        usuarioRepository.save(new Usuario("user", "", passwordEncoder.encode("adminpass"), "USER"));//User=aficionado
+	    usuarioRepository.save(new Usuario("admin", "", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
+        usuarioRepository.save(new Usuario("manager", "", passwordEncoder.encode("adminpass"), "USER", "MANAGER"));
     }
 
     

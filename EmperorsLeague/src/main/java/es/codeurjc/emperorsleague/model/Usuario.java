@@ -18,8 +18,7 @@ public class Usuario {
 	
 	private String nombre;
 	private String correo;
-
-	private String encodedContrasena;
+	private String contrasena;
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
@@ -27,14 +26,10 @@ public class Usuario {
 	public Usuario() {
 	}
 	
-	public Usuario(String nombre, String correo) {
+	public Usuario(String nombre, String correo, String password, String... roles) {
 		this.nombre = nombre;
 		this.correo = correo;
-	}
-	
-	public Usuario(String name, String encodedPassword, String... roles) {
-		this.nombre= name;
-		this.encodedContrasena = encodedPassword;
+		this.contrasena = password;
 		this.roles = List.of(roles);
 	}
 
@@ -54,12 +49,12 @@ public class Usuario {
 		this.correo = correo;
 	}
 
-	public String getEncodedContrasena() {
-		return encodedContrasena;
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setEncodedContrasena(String encodedContrasena) {
-		this.encodedContrasena = encodedContrasena;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public List<String> getRoles() {

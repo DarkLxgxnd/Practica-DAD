@@ -13,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
 	RepositoryUserDetailsService userDetailsService;
 
@@ -21,46 +20,37 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder(10, new SecureRandom());
 	}
+
     @Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	
-    	// Public pages
-        http.authorizeRequests().antMatchers("/").permitAll();
-        http.authorizeRequests().antMatchers("/login").permitAll();
-        http.authorizeRequests().antMatchers("/loginerror").permitAll();
-        http.authorizeRequests().antMatchers("/logout").permitAll();
-        http.authorizeRequests().antMatchers("/partidos").permitAll();
-        http.authorizeRequests().antMatchers("/equipos").permitAll();
-        http.authorizeRequests().antMatchers("/clasificacion").permitAll();
-        http.authorizeRequests().antMatchers("/partidos/{id_partido}").permitAll();
-        http.authorizeRequests().antMatchers("/registro").permitAll();
-      
+    	// Páginas públicas
+        http.authorizeHttpRequests().antMatchers("/").permitAll();
+        http.authorizeHttpRequests().antMatchers("/login").permitAll();
+        http.authorizeHttpRequests().antMatchers("/loginerror").permitAll();
+        http.authorizeHttpRequests().antMatchers("/logout").permitAll();
+        http.authorizeHttpRequests().antMatchers("/signup").permitAll();
+        http.authorizeHttpRequests().antMatchers("/partidos").permitAll();
+        http.authorizeHttpRequests().antMatchers("/equipos").permitAll();
+        http.authorizeHttpRequests().antMatchers("/clasificacion").permitAll();
+        http.authorizeHttpRequests().antMatchers("/partidos/*").permitAll();
 
+        // Páginas privadas
+        http.authorizeHttpRequests().antMatchers("/partidos/new").hasAnyRole("ADMIN");
+        http.authorizeHttpRequests().antMatchers("/partidos/*/edit").hasAnyRole("ADMIN");
+        http.authorizeHttpRequests().antMatchers("/partidos/*/delete").hasAnyRole("ADMIN");
+        http.authorizeHttpRequests().antMatchers("/equipos/new").hasAnyRole("ADMIN");
+        http.authorizeHttpRequests().antMatchers("/equipos/*/edit").hasAnyRole("MANAGER");
+        http.authorizeHttpRequests().antMatchers("/equipos/*/delete").hasAnyRole("ADMIN");
+        http.authorizeHttpRequests().antMatchers("/equipos/*/jugadores/new").hasAnyRole("MANAGER");
+        http.authorizeHttpRequests().antMatchers("/equipos/*/jugadores/*/edit").hasAnyRole("MANAGER");
+        http.authorizeHttpRequests().antMatchers("/equipos/*/jugadores/*/delete").hasAnyRole("MANAGER");
 
-         // Private pages
-        /*  http.authorizeRequests().antMatchers("/newbook").hasAnyRole("USER");
-         http.authorizeRequests().antMatchers("/editbook/").hasAnyRole("USER");
-         http.authorizeRequests().antMatchers("/removebook/").hasAnyRole("ADMIN"); Manager,user,admin
-         http.authorizeRequests().antMatchers("/equipos/").hasAnyRole("USER");
-         http.authorizeRequests().antMatchers("/equipos//jugadores/").hasAnyRole("USER"); */
-         http.authorizeRequests().antMatchers("/partidos/new").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("//partidos/**/edit").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("//partidos/*/delete").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("/equipos/new").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("/equipos/*/edit").hasAnyRole("MANAGER");
-         http.authorizeRequests().antMatchers("/equipos/*/delete").hasAnyRole("ADMIN");
-         http.authorizeRequests().antMatchers("/equipos/*/jugadores/new").hasAnyRole("MANAGER");
-         http.authorizeRequests().antMatchers("/equipos/*/jugadores/*/edit").hasAnyRole("MANAGER");
-         http.authorizeRequests().antMatchers("/equipos/*/jugadores/*/delete").hasAnyRole("MANAGER");
-
-
-         // Login form
+        // Login
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("password");

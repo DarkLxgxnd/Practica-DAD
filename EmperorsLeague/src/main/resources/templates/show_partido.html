@@ -15,12 +15,14 @@
 	
 	<br>
 
+	{{#admin}}
 	<div>
         <button onclick="location.href='/partidos/{{partido.id}}/edit'">Editar Partido</button>
         <button onclick="location.href='/partidos/{{partido.id}}/delete'">Eliminar Partido</button>
     </div>
     
     <br>
+	{{/admin}}
 	
 	<div>
         <button onclick="location.href='/partidos'">Volver</button>

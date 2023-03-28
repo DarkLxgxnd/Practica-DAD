@@ -1,0 +1,41 @@
+{{>header}}
+
+<div>
+    <br>
+
+	<form action="/signup" method="post" enctype="multipart/form-data">
+        <h2>Nuevo Usuario</h2>
+
+        <br>
+
+        <div>
+            <label>Nombre: </label>
+            <input name="nombre" placeholder="Nombre"/>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Contraseña: </label>
+            <input name="contrasena" placeholder="Contraseña"/>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Correo: </label>
+            <input name="correo" placeholder="Correo"/>
+        </div>
+
+        <br>
+
+        <input type="hidden" name="roles" value="USER"/>
+
+        <p>
+            <button onclick="location.href='/'; return false;">Cancelar</button>
+            <input type="submit" value="Registrarse"/>
+        </p>
+    </form>
+</div>
+
+{{>footer}}
