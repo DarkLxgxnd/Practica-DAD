@@ -65,3 +65,17 @@ Stefan Gonzales
 
 ### Diagrama Entidad/Relación:
 <img width="508" alt="2023-02-27 (5)" src="https://user-images.githubusercontent.com/123498958/221692814-a71cc0cf-11aa-49a6-8821-af6affb09d93.png">
+
+## Fase 3
+
+### Capturas:
+- **Esquemas:** Modificaciones respectos a la fase 2 para incluir el login y la parte de seguridad.
+
+### Diagrama de navegación:
+<img width="503" alt="2023-03-27 (4)" src="https://user-images.githubusercontent.com/123498958/228159321-d56412fb-34cb-46d3-b893-d7441cd0fe7b.png">
+
+### Diagrama de clases UML:
+![2023-03-27](https://user-images.githubusercontent.com/123498958/228159741-b2483e75-cf4e-47a4-801e-38a845d346fc.png)
+
+
+
