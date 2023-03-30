@@ -31,9 +31,11 @@
 
 		<br>
 
+		<input type="hidden" name="_csrf" value="{{token}}"/>
+		
 		<p>
             <button onclick="location.href='/partidos'; return false;">Cancelar</button>
-            <input type="submit" value="Save"/>
+            <input type="submit" value="Guardar"/>
         </p>
 	</form>
 </div>

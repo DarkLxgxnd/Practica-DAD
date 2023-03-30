@@ -26,10 +26,10 @@ public class Usuario {
 	public Usuario() {
 	}
 	
-	public Usuario(String nombre, String correo, String password, String... roles) {
+	public Usuario(String nombre, String correo, String contrasena, String... roles) {
 		this.nombre = nombre;
 		this.correo = correo;
-		this.contrasena = password;
+		this.contrasena = contrasena;
 		this.roles = List.of(roles);
 	}
 

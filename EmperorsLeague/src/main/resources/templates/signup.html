@@ -4,7 +4,7 @@
     <br>
 
 	<form action="/signup" method="post" enctype="multipart/form-data">
-        <h2>Nuevo Usuario</h2>
+        <h2>Registro</h2>
 
         <br>
 
@@ -30,6 +30,7 @@
         <br>
 
         <input type="hidden" name="roles" value="USER"/>
+        <input type="hidden" name="_csrf" value="{{token}}"/>
 
         <p>
             <button onclick="location.href='/'; return false;">Cancelar</button>

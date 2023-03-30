@@ -34,6 +34,6 @@ public class LoginController {
 	public String newUsuarioProcess(Model model, Usuario usuario) {
 		usuarioService.save(usuario);
 
-		return "/signedup";
+		return "signedup";
 	}
 }
