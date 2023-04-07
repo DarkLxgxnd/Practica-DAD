@@ -1,4 +1,4 @@
-package es.codeurjc.emperorsleague.events;
+package es.codeurjc.serviciointerno.comunicados;
 
 import javax.mail.MessagingException;
 
@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ComunicacionReceiver {
+public class ComunicadoReceiver {
     @Autowired
     private EmailSender emailSender;
 
-    @RabbitListener(queues = "comunicaciones", ackMode = "AUTO")
-    public void receiveComunicacion(Comunicacion comunicacion) throws MessagingException {
-        emailSender.sendEmail(comunicacion);
+    @RabbitListener(queues = "comunicados", ackMode = "AUTO")
+    public void receiveComunicacion(Comunicado comunicado) throws MessagingException {
+        emailSender.sendEmail(comunicado);
     }
 }

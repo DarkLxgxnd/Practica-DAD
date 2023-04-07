@@ -1,10 +1,10 @@
 package es.codeurjc.emperorsleague.events;
 
-public class Comunicacion {
+public class Comunicado {
     private String titulo;
     private String contenido;
 
-    public Comunicacion(String titulo, String contenido) {
+    public Comunicado(String titulo, String contenido) {
         this.titulo = titulo;
         this.contenido = contenido;
     }
@@ -13,7 +13,15 @@ public class Comunicacion {
         return titulo;        
     }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
     public String getContenido() {
         return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 }

@@ -1,4 +1,4 @@
-package es.codeurjc.emperorsleague.events;
+package es.codeurjc.serviciointerno.notificaciones;
 
 public class Notificacion {
     private String equipo;

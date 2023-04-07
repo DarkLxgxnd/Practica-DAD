@@ -1,4 +1,4 @@
-package es.codeurjc.emperorsleague;
+package es.codeurjc.serviciointerno;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.SpringApplication;
@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class EmperorsLeagueApplication {
+public class ServicioInternoApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(EmperorsLeagueApplication.class, args);
+		SpringApplication.run(ServicioInternoApplication.class, args);
 	}
 
 	@Bean
@@ -26,3 +26,4 @@ public class EmperorsLeagueApplication {
 		return new Queue("notificaciones", false);
 	}
 }
+

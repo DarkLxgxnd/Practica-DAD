@@ -1,22 +1,12 @@
-package es.codeurjc.emperorsleague.events;
+package es.codeurjc.serviciointerno.comunicados;
 
-public class Notificacion {
-    private String equipo;
+public class Comunicado {
     private String titulo;
     private String contenido;
 
-    public Notificacion(String equipo, String titulo, String contenido) {
-        this.equipo = equipo;
+    public Comunicado(String titulo, String contenido) {
         this.titulo = titulo;
         this.contenido = contenido;
-    }
-
-    public String getEquipo() {
-        return equipo;
-    }
-
-    public void setEquipo(String equipo) {
-        this.equipo = equipo;
     }
 
     public String getTitulo() {

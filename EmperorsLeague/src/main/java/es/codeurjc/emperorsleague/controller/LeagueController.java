@@ -1,7 +1,6 @@
 package es.codeurjc.emperorsleague.controller;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import es.codeurjc.emperorsleague.events.ComunicacionSender;
+import es.codeurjc.emperorsleague.events.ComunicadoSender;
 import es.codeurjc.emperorsleague.events.NotificacionesReceiver;
-import es.codeurjc.emperorsleague.events.NotificacionesSender;
+import es.codeurjc.emperorsleague.events.PartidoSender;
 import es.codeurjc.emperorsleague.model.Clasificacion;
 import es.codeurjc.emperorsleague.model.Equipo;
 import es.codeurjc.emperorsleague.model.Jugador;
@@ -42,10 +41,10 @@ public class LeagueController {
     private JugadorService jugadorService;
 
 	@Autowired
-	private ComunicacionSender comunicacionSender;
+	private ComunicadoSender comunicadoSender;
 
 	@Autowired
-	private NotificacionesSender notificacionesSender;
+	private PartidoSender partidoSender;
 
 	@Autowired
 	private NotificacionesReceiver notificacionesReceiver;
@@ -104,7 +103,7 @@ public class LeagueController {
 	@PostMapping("/partidos/new")
 	public String newPartido(Model model, Partido partido) {
 		partido.setPuntos();
-		createNotificaciones(partido);
+		partidoSender.sendPartido(partido);
 		partidoService.save(partido);
 
 		return "saved_partido";
@@ -267,16 +266,16 @@ public class LeagueController {
 
 	/* Servicio Interno */
 
-	@GetMapping("/comunicaciones/new")
+	@GetMapping("/comunicados/new")
 	public String newComunicacion(Model model) {
-		return "new_comunicacion";
+		return "new_comunicado";
 	}
 
-	@PostMapping("/comunicaciones/new")
+	@PostMapping("/comunicados/new")
 	public String newComunicacionProcess(Model model, @RequestParam String titulo, @RequestParam String contenido) {
-		comunicacionSender.sendComunicacion(titulo, contenido);
+		comunicadoSender.sendComunicacion(titulo, contenido);
 		
-		return "sent_comunicacion";
+		return "sent_comunicado";
 	}
 
 	@GetMapping("/notificaciones")
@@ -284,22 +283,5 @@ public class LeagueController {
 		model.addAttribute("notificaciones", notificacionesReceiver.getNotificaciones());
 		
 		return "show_notificaciones";
-	}
-
-	public void createNotificaciones(Partido partido) {
-		List<Equipo> equipos = partido.getEquiposParticipantes();
-		Equipo equipoLocal = equipos.get(0);
-		Equipo equipoVisitante = equipos.get(1);
-
-		if (partido.getGolesLocal() > partido.getGolesVisitante()) {
-			notificacionesSender.sendNotificacion(equipoLocal.getNombre(), "¡Nueva victoria de " + equipoLocal.getNombre() + "!", "" + equipoLocal.getNombre() + " ha ganado " + partido.getGolesLocal() + "-" + partido.getGolesVisitante() + " ante " + equipoVisitante.getNombre());
-			notificacionesSender.sendNotificacion(equipoVisitante.getNombre(), "¡Nueva derrota de " + equipoVisitante.getNombre() + "!", "" + equipoVisitante.getNombre() + " ha perdido " + partido.getGolesVisitante() + "-" + partido.getGolesLocal() + " ante " + equipoLocal.getNombre());
-		} else if (partido.getGolesLocal() == partido.getGolesVisitante()) {
-			notificacionesSender.sendNotificacion(equipoLocal.getNombre(), "¡Nuevo empate de " + equipoLocal.getNombre() + "!", "" + equipoLocal.getNombre() + " ha empatado " + partido.getGolesLocal() + "-" + partido.getGolesVisitante() + " ante " + equipoVisitante.getNombre());
-			notificacionesSender.sendNotificacion(equipoVisitante.getNombre(), "¡Nuevo empate de " + equipoVisitante.getNombre() + "!", "" + equipoVisitante.getNombre() + " ha empatado " + partido.getGolesVisitante() + "-" + partido.getGolesLocal() + " ante " + equipoLocal.getNombre());
-		} else {
-			notificacionesSender.sendNotificacion(equipoLocal.getNombre(), "¡Nueva derrota de " + equipoLocal.getNombre() + "!", "" + equipoLocal.getNombre() + " ha perdido " + partido.getGolesLocal() + "-" + partido.getGolesVisitante() + " ante " + equipoVisitante.getNombre());
-			notificacionesSender.sendNotificacion(equipoVisitante.getNombre(), "¡Nueva victoria de " + equipoVisitante.getNombre() + "!", "" + equipoVisitante.getNombre() + " ha ganado " + partido.getGolesVisitante() + "-" + partido.getGolesLocal() + " ante " + equipoLocal.getNombre());
-		}
 	}
 }

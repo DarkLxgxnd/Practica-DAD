@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NotificacionesSender {
+public class ComunicadoSender {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
-    public void sendNotificacion(String equipo, String titulo, String contenido) {
-        Notificacion notificacion = new Notificacion(equipo, titulo, contenido);
+    public void sendComunicacion(String titulo, String contenido) {
+        Comunicado comunicado = new Comunicado(titulo, contenido);
         
-        rabbitTemplate.convertAndSend("notificaciones", notificacion);
+        rabbitTemplate.convertAndSend("comunicados", comunicado);
     }
 }

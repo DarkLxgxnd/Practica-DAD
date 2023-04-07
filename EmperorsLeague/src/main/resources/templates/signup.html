@@ -10,26 +10,25 @@
 
         <div>
             <label>Nombre: </label>
-            <input name="nombre" placeholder="Nombre"/>
+            <input type="text" name="nombre" placeholder="Nombre"/>
         </div>
 
         <br>
 
         <div>
             <label>Contraseña: </label>
-            <input name="contrasena" placeholder="Contraseña"/>
+            <input type="password" name="contrasena" placeholder="Contraseña"/>
         </div>
 
         <br>
 
         <div>
-            <label>Correo: </label>
-            <input name="correo" placeholder="Correo"/>
+            <label>Correo electrónico: </label>
+            <input type="email" name="correo" placeholder="Correo electrónico"/>
         </div>
 
         <br>
 
-        <input type="hidden" name="roles" value="USER"/>
         <input type="hidden" name="_csrf" value="{{token}}"/>
 
         <p>
