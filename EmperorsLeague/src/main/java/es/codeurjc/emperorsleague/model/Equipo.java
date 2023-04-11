@@ -29,6 +29,9 @@ public class Equipo {
     @ManyToOne
     private Clasificacion clasificacion;
 
+    @ManyToMany(mappedBy = "equiposSuscritos")
+    private List<Usuario> usuarios;
+
     public Equipo() {
     }
 

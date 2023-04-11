@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -22,6 +23,9 @@ public class Usuario {
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
+
+	@ManyToMany
+    private List<Equipo> equiposSuscritos;
 	
 	public Usuario() {
 	}
@@ -64,5 +68,12 @@ public class Usuario {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
-	
+
+	public List<Equipo> getEquiposSuscritos() {
+		return equiposSuscritos;
+	}
+
+	public void setEquiposSuscritos(List<Equipo> equiposSuscritos) {
+		this.equiposSuscritos = equiposSuscritos;
+	}
 }

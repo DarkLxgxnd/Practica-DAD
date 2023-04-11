@@ -1,9 +1,14 @@
 package es.codeurjc.emperorsleague.events;
 
-public class Notificacion {
+import java.io.Serializable;
+
+public class Notificacion implements Serializable {
     private String equipo;
     private String titulo;
     private String contenido;
+
+    public Notificacion() {
+    }
 
     public Notificacion(String equipo, String titulo, String contenido) {
         this.equipo = equipo;

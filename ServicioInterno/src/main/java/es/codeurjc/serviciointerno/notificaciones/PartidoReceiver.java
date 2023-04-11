@@ -9,7 +9,7 @@ public class PartidoReceiver {
     @Autowired
     NotificacionesSender notificacionesSender;
 
-    @RabbitListener(queues = "partidos", ackMode = "AUTO")
+    @RabbitListener(queues = "partidos", containerFactory = "jsonRabbitListener")
     public void receivePartido(PartidoInfo partidoInfo) {
         notificacionesSender.sendNotificaciones(partidoInfo);
     }

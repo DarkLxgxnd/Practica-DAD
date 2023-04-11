@@ -9,7 +9,7 @@ public class ComunicadoSender {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
-    public void sendComunicacion(String titulo, String contenido) {
+    public void sendComunicado(String titulo, String contenido) {
         Comunicado comunicado = new Comunicado(titulo, contenido);
         
         rabbitTemplate.convertAndSend("comunicados", comunicado);

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class NotificacionesReceiver {
     private List<Notificacion> notificaciones = new ArrayList<>();
     
-    @RabbitListener(queues = "notificaciones", ackMode = "AUTO")
+    @RabbitListener(queues = "notificaciones", containerFactory = "jsonRabbitListener")
     public void receiveNotificacion(Notificacion notificacion) {
         notificaciones.add(notificacion);
     }

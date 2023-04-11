@@ -1,16 +1,21 @@
 package es.codeurjc.emperorsleague.events;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class PartidoInfo {
+public class PartidoInfo implements Serializable {
 	private int golesLocal;
 	private int golesVisitante;
-	private List<String> equiposParticipantes;
+	private String equipoLocal;
+	private String equipoVisitante;
 
-	public PartidoInfo(int golesLocal, int golesVisitante, List<String> equiposParticipantes) {
+	public PartidoInfo() {
+	}
+
+	public PartidoInfo(int golesLocal, int golesVisitante, String equipoLocal, String equipoVisitante) {
 		this.golesLocal = golesLocal;
 		this.golesVisitante = golesVisitante;
-		this.equiposParticipantes = equiposParticipantes;
+		this.equipoLocal = equipoLocal;
+		this.equipoVisitante = equipoVisitante;
 	}
 
 	public int getGolesLocal() {
@@ -29,11 +34,24 @@ public class PartidoInfo {
 		this.golesVisitante = golesVisitante;
 	}
 
-	public List<String> getEquiposParticipantes() {
-		return equiposParticipantes;
+	public String getEquipoLocal() {
+		return equipoLocal;
 	}
 
-	public void setEquiposParticipantes(List<String> equiposParticipantes) {
-		this.equiposParticipantes = equiposParticipantes;
+	public void setEquipoLocal(String equipoLocal) {
+		this.equipoLocal = equipoLocal;
+	}
+
+	public String getEquipoVisitante() {
+		return equipoVisitante;
+	}
+
+	public void setEquipoVisitante(String equipoVisitante) {
+		this.equipoVisitante = equipoVisitante;
+	}
+
+	@Override
+	public String toString() {
+		return "PartidoInfo [golesLocal=" + golesLocal + ", golesVisitante=" + golesVisitante + ", equipoLocal=" + equipoLocal + ", equipoVisitante=" + equipoVisitante + "]";
 	}
 }

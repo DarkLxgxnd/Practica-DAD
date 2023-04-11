@@ -101,7 +101,7 @@ public class LeagueController {
 	}
 
 	@PostMapping("/partidos/new")
-	public String newPartido(Model model, Partido partido) {
+	public String newPartidoProcess(Model model, Partido partido) {
 		partido.setPuntos();
 		partidoSender.sendPartido(partido);
 		partidoService.save(partido);
@@ -166,6 +166,8 @@ public class LeagueController {
 	@GetMapping("/equipos/{id_equipo}")
 	public String showEquipo(Model model, @PathVariable long id_equipo) {
 		Optional<Equipo> equipo = equipoService.findById(id_equipo);
+
+		
 
 		model.addAttribute("equipo", equipo.get());
 
@@ -267,15 +269,33 @@ public class LeagueController {
 	/* Servicio Interno */
 
 	@GetMapping("/comunicados/new")
-	public String newComunicacion(Model model) {
+	public String newComunicado(Model model) {
 		return "new_comunicado";
 	}
 
 	@PostMapping("/comunicados/new")
-	public String newComunicacionProcess(Model model, @RequestParam String titulo, @RequestParam String contenido) {
-		comunicadoSender.sendComunicacion(titulo, contenido);
+	public String newComunicadoProcess(Model model, @RequestParam String titulo, @RequestParam String contenido) {
+		comunicadoSender.sendComunicado(titulo, contenido);
 		
 		return "sent_comunicado";
+	}
+
+	@PostMapping("/equipos/{id_equipo}/subscribe/add")
+	public String newSuscripcion(Model model, @PathVariable long id_equipo) {
+		Optional<Equipo> equipo = equipoService.findById(id_equipo);
+
+		model.addAttribute("equipo", equipo.get());
+
+		return "saved_suscripcion";
+	}
+
+	@PostMapping("/equipos/{id_equipo}/subscribe/delete")
+	public String deleteSuscripcion(Model model, @PathVariable long id_equipo) {
+		Equipo equipo = equipoService.getReferenceById(id_equipo);
+
+		model.addAttribute("equipo", equipo);
+
+		return "deleted_suscripcion";
 	}
 
 	@GetMapping("/notificaciones")

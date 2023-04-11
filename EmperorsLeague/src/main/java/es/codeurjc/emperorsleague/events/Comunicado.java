@@ -4,6 +4,9 @@ public class Comunicado {
     private String titulo;
     private String contenido;
 
+    public Comunicado() {
+    }
+
     public Comunicado(String titulo, String contenido) {
         this.titulo = titulo;
         this.contenido = contenido;
