@@ -167,8 +167,6 @@ public class LeagueController {
 	public String showEquipo(Model model, @PathVariable long id_equipo) {
 		Optional<Equipo> equipo = equipoService.findById(id_equipo);
 
-		
-
 		model.addAttribute("equipo", equipo.get());
 
 		return "show_equipo";
@@ -280,7 +278,7 @@ public class LeagueController {
 		return "sent_comunicado";
 	}
 
-	@PostMapping("/equipos/{id_equipo}/subscribe/add")
+	@GetMapping("/equipos/{id_equipo}/subscribe/add")
 	public String newSuscripcion(Model model, @PathVariable long id_equipo) {
 		Optional<Equipo> equipo = equipoService.findById(id_equipo);
 
@@ -289,11 +287,11 @@ public class LeagueController {
 		return "saved_suscripcion";
 	}
 
-	@PostMapping("/equipos/{id_equipo}/subscribe/delete")
+	@GetMapping("/equipos/{id_equipo}/subscribe/delete")
 	public String deleteSuscripcion(Model model, @PathVariable long id_equipo) {
-		Equipo equipo = equipoService.getReferenceById(id_equipo);
+		Optional<Equipo> equipo = equipoService.findById(id_equipo);
 
-		model.addAttribute("equipo", equipo);
+		model.addAttribute("equipo", equipo.get());
 
 		return "deleted_suscripcion";
 	}
