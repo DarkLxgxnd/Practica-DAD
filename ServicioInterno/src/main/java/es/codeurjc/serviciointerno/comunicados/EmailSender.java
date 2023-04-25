@@ -17,9 +17,9 @@ public class EmailSender {
 
 		helper = new MimeMessageHelper(message, true);
 
-		helper.setSubject("subject");
-		helper.setTo("");
-		helper.setText("", true);
+		helper.setSubject("Nuevo Comunicado: " + comunicado.getTitulo());
+		helper.setTo("srgn807@gmail.com");
+		helper.setText(comunicado.getContenido(), true);
 
 		javaMailSender.send(message);
 	}

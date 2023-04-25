@@ -11,7 +11,7 @@ public class ComunicadoReceiver {
     @Autowired
     private EmailSender emailSender;
 
-    @RabbitListener(queues = "comunicados", ackMode = "AUTO")
+    @RabbitListener(queues = "comunicados", containerFactory = "jsonRabbitListener")
     public void receiveComunicacion(Comunicado comunicado) throws MessagingException {
         emailSender.sendEmail(comunicado);
     }
