@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=league
+  
+  broker:
+    image: rabbitmq:3.11
+
+  service:
+    build: Service/.
+    environment:
+      - SPRING_RABBITMQ_HOST=broker
+    restart: unless-stopped
+
+  web:
+    build: Web/.
+    ports:
+      - "8443:8443"
+    expose: 
+      - "8443"
+    environment:
+      - SPRING_RABBITMQ_HOST=broker
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/league
+    restart: unless-stopped
