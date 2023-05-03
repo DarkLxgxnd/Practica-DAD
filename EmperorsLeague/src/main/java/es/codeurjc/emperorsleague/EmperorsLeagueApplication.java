@@ -1,5 +1,9 @@
 package es.codeurjc.emperorsleague;
 
+import java.util.Collections;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -9,10 +13,21 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
+import org.springframework.session.hazelcast.config.annotation.web.http.EnableHazelcastHttpSession;
 
+import com.hazelcast.config.Config;
+import com.hazelcast.config.JoinConfig;
+
+@EnableCaching
 @SpringBootApplication
+@EnableHazelcastHttpSession
 public class EmperorsLeagueApplication {
+	private static final Log LOG = LogFactory.getLog(EmperorsLeagueApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EmperorsLeagueApplication.class, args);
 	}
@@ -51,4 +66,21 @@ public class EmperorsLeagueApplication {
 		jsonRabbitListener.setMessageConverter(converter());
 		return jsonRabbitListener;
 	}
+
+	@Bean
+    public CacheManager cacheManager() {
+    	LOG.info("Activating cache...");
+    	return new ConcurrentMapCacheManager("emperorsleague");
+    }
+
+	@Bean
+    public Config config() {
+        Config config = new Config();
+        JoinConfig joinConfig = config.getNetworkConfig().getJoin();
+
+        joinConfig.getMulticastConfig().setEnabled(false);
+        joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("127.0.0.1"));
+
+        return config;
+    }
 }
