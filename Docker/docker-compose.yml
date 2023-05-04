@@ -17,14 +17,26 @@ services:
     image: haproxy:2.7
     ports:
       - "443:443"
+      - "8080:8080"
       - "8282:8282"
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     restart: unless-stopped
 
-  service:
-    container_name: emperorsleague-internalservice
+  service1:
+    container_name: emperorsleague-internalservice-1
     build: Service/.
+    expose:
+      - "8080"
+    environment:
+      - SPRING_RABBITMQ_HOST=broker
+    restart: unless-stopped
+
+  service2:
+    container_name: emperorsleague-internalservice-2
+    build: Service/.
+    expose:
+      - "8080"
     environment:
       - SPRING_RABBITMQ_HOST=broker
     restart: unless-stopped
