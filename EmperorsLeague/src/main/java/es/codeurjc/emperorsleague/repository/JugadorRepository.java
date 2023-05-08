@@ -15,9 +15,6 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long> {
     @CacheEvict(allEntries = true)
     Jugador save(Jugador jugador);
 
-    @CacheEvict(allEntries = true)
-    Jugador delete(long id);
-
     @Cacheable
     Optional<Jugador> findById(long id);
     

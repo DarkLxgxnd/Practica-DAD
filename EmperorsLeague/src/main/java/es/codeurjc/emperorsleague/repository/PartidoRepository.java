@@ -1,4 +1,3 @@
-
 package es.codeurjc.emperorsleague.repository;
 
 import java.util.List;
@@ -15,9 +14,6 @@ import es.codeurjc.emperorsleague.model.Partido;
 public interface PartidoRepository extends JpaRepository<Partido, Long> {
     @CacheEvict(allEntries = true)
     Partido save(Partido partido);
-    
-    @CacheEvict(allEntries = true)
-    Partido delete(long id);
 
     @Cacheable
     Optional<Partido> findById(long id);

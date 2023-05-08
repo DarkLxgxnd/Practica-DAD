@@ -14,9 +14,6 @@ import es.codeurjc.emperorsleague.model.Equipo;
 public interface EquipoRepository extends JpaRepository<Equipo, Long> {
     @CacheEvict(allEntries = true)
     Equipo save(Equipo equipo);
-    
-    @CacheEvict(allEntries = true)
-    Equipo delete(long id);
 
     @Cacheable
     Optional<Equipo> findById(long id);

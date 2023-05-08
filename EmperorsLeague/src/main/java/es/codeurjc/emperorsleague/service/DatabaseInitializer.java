@@ -26,8 +26,7 @@ public class DatabaseInitializer {
     public void init() {
         clasificacionRepository.save(new Clasificacion());
 
+        usuarioRepository.deleteAll();
 	    usuarioRepository.save(new Usuario("admin", "", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
-    }
-
-    
+    }   
 }
