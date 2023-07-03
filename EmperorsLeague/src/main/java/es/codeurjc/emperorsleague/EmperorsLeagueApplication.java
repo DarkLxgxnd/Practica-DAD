@@ -1,6 +1,6 @@
 package es.codeurjc.emperorsleague;
 
-import java.util.Collections;
+import java.util.Arrays;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -79,7 +79,7 @@ public class EmperorsLeagueApplication {
         JoinConfig joinConfig = config.getNetworkConfig().getJoin();
 
         joinConfig.getMulticastConfig().setEnabled(false);
-        joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("127.0.0.1"));
+        joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Arrays.asList("docker-web-1", "docker-web-2"));
 
         return config;
     }

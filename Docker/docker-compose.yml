@@ -2,16 +2,16 @@ version: "3"
 
 services:
   database:
-    image: mysql:8.0
+    image: mysql:8.0.32
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=league
 
   broker:
-    image: rabbitmq:3.11
+    image: rabbitmq:3.11.10
 
   load-balancer:
-    image: haproxy:2.7
+    image: haproxy:2.7.3
     ports:
       - "443:443"
       - "8282:8282"
