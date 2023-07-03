@@ -20,14 +20,9 @@ public class LoginController {
 	@Autowired
     private PasswordEncoder passwordEncoder;
 
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-
-	@RequestMapping("/loginerror")
+	@RequestMapping("/login/error")
 	public String loginerror() {
-		return "loginerror";
+		return "error_login";
 	}
 	
 	@GetMapping("/signup")

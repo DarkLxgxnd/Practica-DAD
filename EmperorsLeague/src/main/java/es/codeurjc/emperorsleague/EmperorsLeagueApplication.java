@@ -22,8 +22,8 @@ import org.springframework.session.hazelcast.config.annotation.web.http.EnableHa
 import com.hazelcast.config.Config;
 import com.hazelcast.config.JoinConfig;
 
-@EnableCaching
 @SpringBootApplication
+@EnableCaching
 @EnableHazelcastHttpSession
 public class EmperorsLeagueApplication {
 	private static final Log LOG = LogFactory.getLog(EmperorsLeagueApplication.class);
@@ -70,7 +70,7 @@ public class EmperorsLeagueApplication {
 	@Bean
     public CacheManager cacheManager() {
     	LOG.info("Activating cache...");
-    	return new ConcurrentMapCacheManager("emperorsleague");
+    	return new ConcurrentMapCacheManager("equipos", "jugadores", "partidos");
     }
 
 	@Bean

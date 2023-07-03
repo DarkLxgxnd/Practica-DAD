@@ -14,14 +14,27 @@ public class CacheController {
     @Autowired
     private CacheManager cacheManager;
 
-    @GetMapping(value="/cache")
-    public Map<Object, Object> getCacheContent() {
+    @GetMapping(value = "/equipos/cache")
+    public Map<Object, Object> getEquiposCacheContent() {
         ConcurrentMapCacheManager cacheMgr = (ConcurrentMapCacheManager) cacheManager;
-        ConcurrentMapCache cache = (ConcurrentMapCache) cacheMgr.getCache("emperorsleague");
+        ConcurrentMapCache cache = (ConcurrentMapCache) cacheMgr.getCache("equipos");
+
+        return cache.getNativeCache();
+    }
+
+    @GetMapping(value = "/jugadores/cache")
+    public Map<Object, Object> getJugadoresCacheContent() {
+        ConcurrentMapCacheManager cacheMgr = (ConcurrentMapCacheManager) cacheManager;
+        ConcurrentMapCache cache = (ConcurrentMapCache) cacheMgr.getCache("jugadores");
+
+        return cache.getNativeCache();
+    }
+
+    @GetMapping(value = "/partidos/cache")
+    public Map<Object, Object> getPartidosCacheContent() {
+        ConcurrentMapCacheManager cacheMgr = (ConcurrentMapCacheManager) cacheManager;
+        ConcurrentMapCache cache = (ConcurrentMapCache) cacheMgr.getCache("partidos");
 
         return cache.getNativeCache();
     }
 }
-
-    
-

@@ -10,10 +10,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import es.codeurjc.emperorsleague.model.Jugador;
 
-@CacheConfig(cacheNames = "emperorsleague")
+@CacheConfig(cacheNames = "jugadores")
 public interface JugadorRepository extends JpaRepository<Jugador, Long> {
     @CacheEvict(allEntries = true)
     Jugador save(Jugador jugador);
+
+    @CacheEvict(allEntries = true)
+    void deleteById(long id);
 
     @Cacheable
     Optional<Jugador> findById(long id);
