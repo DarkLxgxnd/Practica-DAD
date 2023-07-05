@@ -229,3 +229,16 @@ Ejecutar el servicio interno con java -jar serviciointerno.jar
 Abrir un navegador y comenzar a usar la aplicación con https://localhost:8443/
 
 <br>
+
+## Fase 4
+
+### Diagrama de clases UML actualizado:
+
+![image](https://github.com/DarkLxgxnd/Emperors-League/assets/123498958/66678850-114a-4db2-a9e8-2f840853ca50)
+<br>
+
+### Diagrama de infaestructura de la aplicación:
+
+![image](https://github.com/DarkLxgxnd/Emperors-League/assets/123498958/e85dd2c9-5f0b-4ce6-b43f-5988ec4c8413)
+<br>
+
