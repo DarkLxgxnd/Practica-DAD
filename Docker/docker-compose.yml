@@ -13,7 +13,7 @@ services:
   load-balancer:
     image: haproxy:2.7.3
     ports:
-      - "443:443"
+      - "9443:443"
       - "8282:8282"
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
