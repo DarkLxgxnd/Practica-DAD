@@ -1,6 +1,8 @@
 # Emperors League
 Consiste en una página web de una liga de fútbol profesional en dónde se podrá consultar clasificación, resultados y estadísticas de los diferentes partidos a disputar. 
 
+Vídeo explicativo de la aplicación: https://youtu.be/Ia8xBb-YTpM
+
 ### Autores:
 Raúl Martín<br>
 Stefan Gonzales
@@ -107,7 +109,7 @@ Stefan Gonzales
 
 - **Error:** Mensaje de error cuando las credenciales introducidas no son correctas.
 
-![image](https://user-images.githubusercontent.com/117100820/231526577-f02b1262-ffab-4a1d-87f3-eccf7801b807.png)
+![image](https://github.com/DarkLxgxnd/Emperors-League/assets/117100820/ead426fb-baf0-4b7d-8e5d-3aec42701360)
 
 <br>
 
@@ -235,10 +237,9 @@ Abrir un navegador y comenzar a usar la aplicación con https://localhost:8443/
 ### Diagrama de clases UML actualizado:
 
 ![image](https://github.com/DarkLxgxnd/Emperors-League/assets/123498958/66678850-114a-4db2-a9e8-2f840853ca50)
+
 <br>
 
-### Diagrama de infaestructura de la aplicación:
+### Diagrama de infraestructura de la aplicación:
 
-![image](https://github.com/DarkLxgxnd/Emperors-League/assets/123498958/e85dd2c9-5f0b-4ce6-b43f-5988ec4c8413)
-<br>
-
+![image](https://github.com/DarkLxgxnd/Emperors-League/assets/117100820/6ecc988c-537e-482c-b6ff-135133f0ab77)
